@@ -17,6 +17,7 @@ atras_product_detail.addEventListener("click", () => {
 });
 
 menu.addEventListener("click", () => {
+    
   if (
     product_detail
       .getAttribute("class")
@@ -30,8 +31,10 @@ menu.addEventListener("click", () => {
         .find((s) => s === "inactive")
     ) {
       mobile_menu.classList.remove("inactive");
+      main_container.classList.add("inactive");
     } else {
       mobile_menu.classList.add("inactive");
+      main_container.classList.remove("inactive");
     }
   } else {
     product_detail.classList.add("inactive");
@@ -53,8 +56,10 @@ navbar_email.addEventListener("click", () => {
         .find((s) => s === "inactive")
     ) {
       desktop_menu.classList.remove("inactive");
+      
     } else {
       desktop_menu.classList.add("inactive");
+     
     }
   } else {
     product_detail.classList.add("inactive");
