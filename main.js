@@ -7,17 +7,21 @@ const carrito_Ayuda = document.querySelector(".carrito_Ayuda");
 const mobile_menu = document.querySelector(".mobile-menu");
 const menu = document.querySelector(".menu");
 
-const atras_shoppingCartContainer = document.querySelector(".atras-product-detail");
+const productDetailContainer = document.querySelector("#productDetail");
+const product_detail_close = document.querySelector(".product-detail-close");
 
-const cards_container = document.querySelector(".cards-container");
-const main_container=document.querySelector(".main-container")
+const atras_shoppingCartContainer = document.querySelector(
+  ".atras-product-detail"
+);
 
-atras_shoppingCartContainer.addEventListener("click", () => {
-  shoppingCartContainer.classList.add("inactive");
+product_detail_close.addEventListener("click", () => {
+  productDetailContainer.classList.add("inactive");
 });
 
+const cards_container = document.querySelector(".cards-container");
+const main_container = document.querySelector(".main-container");
+
 menu.addEventListener("click", () => {
-    
   if (
     shoppingCartContainer
       .getAttribute("class")
@@ -32,6 +36,7 @@ menu.addEventListener("click", () => {
     ) {
       mobile_menu.classList.remove("inactive");
       main_container.classList.add("inactive");
+      productDetailContainer.classList.add("inactive");
     } else {
       mobile_menu.classList.add("inactive");
       main_container.classList.remove("inactive");
@@ -56,10 +61,8 @@ navbar_email.addEventListener("click", () => {
         .find((s) => s === "inactive")
     ) {
       desktop_menu.classList.remove("inactive");
-      
     } else {
       desktop_menu.classList.add("inactive");
-     
     }
   } else {
     shoppingCartContainer.classList.add("inactive");
@@ -86,6 +89,7 @@ carrito_Ayuda.addEventListener("click", () => {
     ) {
       shoppingCartContainer.classList.remove("inactive");
       main_container.classList.add("inactive");
+      productDetailContainer.classList.add("inactive");
     } else {
       shoppingCartContainer.classList.add("inactive");
       main_container.classList.remove("inactive");
@@ -94,7 +98,6 @@ carrito_Ayuda.addEventListener("click", () => {
     desktop_menu.classList.add("inactive");
     mobile_menu.classList.add("inactive");
     shoppingCartContainer.classList.remove("inactive");
-    
   }
 });
 
@@ -119,13 +122,12 @@ const productList = [
   },
 ];
 
-
 productList.map((producto) => {
   const divP = document.createElement("div");
-  divP.classList.add("product-card")
+  divP.classList.add("product-card");
   const img = document.createElement("img");
   const divI = document.createElement("div");
-  divI.classList.add("product-info")
+  divI.classList.add("product-info");
   const divII = document.createElement("div");
   const p1 = document.createElement("p");
   const p2 = document.createElement("p");
@@ -142,4 +144,14 @@ productList.map((producto) => {
   divI.append(divII, figure);
   divP.append(img, divI);
   cards_container.append(divP);
+
+  img.addEventListener("click", openProductDetalAside);
+});
+
+function openProductDetalAside() {
+  productDetailContainer.classList.remove("inactive");
+}
+
+atras_shoppingCartContainer.addEventListener("click", () => {
+  shoppingCartContainer.classList.add("inactive");
 });
