@@ -147,6 +147,7 @@ nav {
 
 /* Clase 13 */
 .product-detail {
+  background: var(--white);
     width: 360px;
     padding:0 24px;
     box-sizing: border-box;
