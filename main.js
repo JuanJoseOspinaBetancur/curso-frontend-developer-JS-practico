@@ -145,11 +145,46 @@ productList.map((producto) => {
   divP.append(img, divI);
   cards_container.append(divP);
 
-  img.addEventListener("click", openProductDetalAside);
+  img.addEventListener("click", () => {
+    openProductDetalAside(producto);
+  });
 });
 
-function openProductDetalAside() {
+const reemplazar=document.getElementById("reemplazar")
+console.log(reemplazar)
+
+function openProductDetalAside(producto) {
+  const divX = document.createElement("div");
+  divX.setAttribute("class", "product-detail-close bg-red-200");
+
+  const imag = document.createElement("img");
+  imag.src = producto.imagen;
+
+  const divP1 = document.createElement("div");
+  divP1.classList.add("product-info");
+
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+
+  const btn = document.createElement("button");
+  btn.setAttribute("class", "primary-button add-to-cart-button");
+
+  const imag2 = document.createElement("img");
+  imag2.src = "./icons/bt_add_to_cart.svg";
+
+  const parrbtn = document.createElement("p");
+  parrbtn.textContent = "Add to cart";
+
+  btn.append(imag2,parrbtn)
+  divP1.append(p1, p2, p3, btn);
+
+  const divPrin=document.createElement("div")
+  divPrin.append(divX, imag, divP1)
+  productDetailContainer.append(divPrin);
+
   productDetailContainer.classList.remove("inactive");
+  shoppingCartContainer.classList.add("inactive");
 }
 
 atras_shoppingCartContainer.addEventListener("click", () => {
