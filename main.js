@@ -9,6 +9,9 @@ const menu = document.querySelector(".menu");
 
 const atras_product_detail = document.querySelector(".atras-product-detail");
 
+const cards_container = document.querySelector(".cards-container");
+const main_container=document.querySelector(".main-container")
+
 atras_product_detail.addEventListener("click", () => {
   product_detail.classList.add("inactive");
 });
@@ -77,13 +80,16 @@ carrito_Ayuda.addEventListener("click", () => {
         .find((s) => s === "inactive")
     ) {
       product_detail.classList.remove("inactive");
+      main_container.classList.add("inactive");
     } else {
       product_detail.classList.add("inactive");
+      main_container.classList.remove("inactive");
     }
   } else {
     desktop_menu.classList.add("inactive");
     mobile_menu.classList.add("inactive");
     product_detail.classList.remove("inactive");
+    
   }
 });
 
@@ -108,7 +114,7 @@ const productList = [
   },
 ];
 
-const cards_container = document.querySelector(".cards-container");
+
 productList.map((producto) => {
   const divP = document.createElement("div");
   divP.classList.add("product-card")
